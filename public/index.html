@@ -1,0 +1,195 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Profilewright · GitHub profile README builder</title>
+  <meta name="description" content="Type a GitHub username, pick a look, copy the markdown. Profilewright draws live cards from your public GitHub data." />
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/style.css" />
+  <link rel="stylesheet" href="/landing.css" />
+</head>
+<body>
+  <!--
+    THESIS: the visitor's own contribution graph is the hero; refuses the stock "screenshot of the app" hero.
+    OWN-WORLD: near-black #070707 ground, hairline white/8% frames, 20px-radius panels, pill controls, Geist 300 display with tight tracking, contribution green #39d353 as the only accent, live SVG cards as the imagery.
+    STORY: see a year of commits turn into scenes, believe it uses only public data and outputs plain markdown, type a username.
+    FIRST VIEWPORT: framed panel filled by an animated contribution field; centred h1, one-line promise, username pill with primary "Build my README" button.
+    FORM: user-pinned reference (getlayers.ai), no roll; seed: pinned.
+    FINISH: unreviewed and undocumented is unfinished; this build ends with the finish review, the verdict, and DESIGN.md
+  -->
+  <header class="nav">
+    <a class="brand" href="/"><svg class="ic" aria-hidden="true"><use href="/icons.svg#logo" /></svg> Profilewright</a>
+    <nav class="nav-links" aria-label="Sections">
+      <a href="#templates">Templates</a>
+      <a href="#features">Features</a>
+      <a href="#how">How it works</a>
+      <a href="#faq">FAQ</a>
+    </nav>
+    <div class="nav-end">
+      <a class="icon-link" href="https://github.com/farhanfath/Profilewright" target="_blank" rel="noopener" aria-label="Profilewright on GitHub"><svg class="ic"><use href="/icons.svg#github" /></svg></a>
+      <a class="btn primary" href="/build">Open builder</a>
+    </div>
+  </header>
+
+  <main class="landing">
+    <section class="stage" aria-labelledby="hero-title">
+      <canvas id="field" aria-hidden="true"></canvas>
+      <div class="stage-copy">
+        <h1 id="hero-title">Your GitHub year, drawn into a README.</h1>
+        <p class="lede">Type a username. Profilewright turns your public commits, languages and repositories into live cards, then hands you the markdown.</p>
+        <form class="start input-row" action="/build" aria-label="Start with your GitHub username">
+          <span aria-hidden="true">@</span>
+          <label class="sr-only" for="hero-username">GitHub username</label>
+          <input id="hero-username" name="username" autocomplete="off" spellcheck="false" placeholder="your-username" required />
+          <button class="btn primary" type="submit">Build my README <svg class="ic" aria-hidden="true"><use href="/icons.svg#arrow" /></svg></button>
+        </form>
+        <p class="facts">No sign-in <i></i> Public data only <i></i> Plain markdown out</p>
+      </div>
+    </section>
+
+    <section id="templates" class="section" aria-labelledby="tpl-title">
+      <div class="section-head">
+        <h2 id="tpl-title"><span id="tpl-count">Twelve</span> looks. One username.</h2>
+        <p>Every card below is rendered live from <a id="demo-link" href="https://github.com/farhanfath" target="_blank" rel="noopener">@farhanfath</a>’s public GitHub. Yours will look like your year.</p>
+      </div>
+      <div id="gallery" class="gallery"></div>
+      <p class="more"><span>Also in the builder: <span id="more-list">Everything Hub, Front Page, Minimal and Terminal</span>.</span> <a href="/build">Browse all templates <svg class="ic" aria-hidden="true"><use href="/icons.svg#arrow" /></svg></a></p>
+    </section>
+
+    <section id="features" class="section" aria-labelledby="feat-title">
+      <div class="section-head">
+        <h2 id="feat-title">Made from your data, not a fill-in-the-blanks template.</h2>
+      </div>
+      <div class="bento">
+        <article class="cell cell-md">
+          <div class="cell-copy">
+            <h3>Plain markdown out</h3>
+            <p>Copy it or download <code>README.md</code>. Edit it anywhere, it’s yours.</p>
+          </div>
+          <div class="window mini-window">
+            <div class="window-bar"><span class="dots"><i></i><i></i><i></i></span><span class="crumb" id="md-crumb">farhanfath / README.md</span></div>
+            <pre id="md-snippet" class="snippet">Loading a real README…</pre>
+          </div>
+        </article>
+
+        <article class="cell cell-themes">
+          <div class="cell-copy">
+            <h3><span id="theme-count">Six</span> themes, light and dark</h3>
+            <p>Cards ship with both modes, so they follow each visitor’s GitHub theme.</p>
+          </div>
+          <ul id="theme-list" class="theme-list"></ul>
+        </article>
+
+        <article class="cell">
+          <div class="cell-copy">
+            <h3>Compose with blocks</h3>
+            <p>Reorder, duplicate or remove sections. Text fields take <code>{name}</code>-style tokens.</p>
+          </div>
+          <ol class="demo-blocks" aria-label="Example block list">
+            <li><svg class="ic" aria-hidden="true"><use href="/icons.svg#grip" /></svg><b>Hero</b><small>name, role, tagline</small></li>
+            <li class="lifted"><svg class="ic" aria-hidden="true"><use href="/icons.svg#grip" /></svg><b>Contribution City</b><small>The city I built this year</small></li>
+            <li><svg class="ic" aria-hidden="true"><use href="/icons.svg#grip" /></svg><b>Projects</b><small>Landmarks</small></li>
+            <li><svg class="ic" aria-hidden="true"><use href="/icons.svg#grip" /></svg><b>Social links</b><small>Visit</small></li>
+          </ol>
+        </article>
+
+        <article class="cell">
+          <div class="cell-copy">
+            <h3>No sign-in, no token</h3>
+            <p>Only public data is read. Nothing to authorize, nothing stored about you.</p>
+          </div>
+          <ul class="reads">
+            <li><svg class="ic" aria-hidden="true"><use href="/icons.svg#check" /></svg> Profile and avatar</li>
+            <li><svg class="ic" aria-hidden="true"><use href="/icons.svg#check" /></svg> Contribution calendar</li>
+            <li><svg class="ic" aria-hidden="true"><use href="/icons.svg#check" /></svg> Top languages</li>
+            <li><svg class="ic" aria-hidden="true"><use href="/icons.svg#check" /></svg> Public repositories</li>
+          </ul>
+        </article>
+
+        <article class="cell">
+          <div class="cell-copy">
+            <h3>Self-host in a minute</h3>
+            <p>Node 20, zero dependencies. Point <code>PUBLIC_URL</code> at your deploy so GitHub can load the cards.</p>
+          </div>
+          <pre class="snippet term"><span>$</span> PUBLIC_URL=https://cards.you.dev \
+  npm start</pre>
+        </article>
+      </div>
+    </section>
+
+    <section id="how" class="section how" aria-labelledby="how-title">
+      <div class="section-head">
+        <h2 id="how-title">From username to profile in three steps.</h2>
+      </div>
+      <ol class="steps">
+        <li>
+          <h3>Type your username</h3>
+          <p>Profilewright pulls your public profile, contribution calendar, languages and top repositories.</p>
+        </li>
+        <li>
+          <h3>Pick a look, tune it</h3>
+          <p>Choose a template and theme, then rearrange blocks and fill in your role, tagline and links.</p>
+        </li>
+        <li>
+          <h3>Paste it into GitHub</h3>
+          <p>Create a public repository named exactly like your username and save the markdown as <code>README.md</code>. It shows on your profile.</p>
+        </li>
+      </ol>
+    </section>
+
+    <section id="faq" class="section faq" aria-labelledby="faq-title">
+      <h2 id="faq-title">Questions, answered.</h2>
+      <div class="faq-list">
+        <details open>
+          <summary>Does it cost anything?</summary>
+          <p>No. There’s no account and no payment. Open the builder and use it.</p>
+        </details>
+        <details>
+          <summary>Where does the README go?</summary>
+          <p>GitHub shows a profile README from a public repository whose name matches your username, for example <code>octocat/octocat</code>. Put <code>README.md</code> at its root.</p>
+        </details>
+        <details>
+          <summary>Do I need to log in or give a token?</summary>
+          <p>No. Profilewright only reads public GitHub data. A server owner can set <code>GITHUB_TOKEN</code> to raise GitHub’s rate limit, but visitors never need one.</p>
+        </details>
+        <details>
+          <summary>Will the cards update when I commit?</summary>
+          <p>Yes. Cards are images served by Profilewright, so they redraw from your latest public data. Responses are cached for an hour.</p>
+        </details>
+        <details>
+          <summary>Why don’t the cards load on github.com?</summary>
+          <p>Card URLs point at the server that made them. When you self-host, set <code>PUBLIC_URL</code> to your deployed address so GitHub can reach the images.</p>
+        </details>
+        <details>
+          <summary>Can I change it later?</summary>
+          <p>Yes. The output is plain markdown, and the builder keeps your whole arrangement in its link, so you can reopen it and keep editing.</p>
+        </details>
+      </div>
+    </section>
+
+    <section class="closing" aria-labelledby="close-title">
+      <h2 id="close-title">Make your profile worth the click.</h2>
+      <form class="start input-row" action="/build" aria-label="Start with your GitHub username">
+        <span aria-hidden="true">@</span>
+        <label class="sr-only" for="close-username">GitHub username</label>
+        <input id="close-username" name="username" autocomplete="off" spellcheck="false" placeholder="your-username" required />
+        <button class="btn primary" type="submit">Build my README <svg class="ic" aria-hidden="true"><use href="/icons.svg#arrow" /></svg></button>
+      </form>
+    </section>
+  </main>
+
+  <footer class="foot">
+    <a class="brand" href="/"><svg class="ic" aria-hidden="true"><use href="/icons.svg#logo" /></svg> Profilewright</a>
+    <p>Built on public GitHub data. Not affiliated with GitHub.</p>
+    <nav aria-label="Footer">
+      <a href="/build">Builder</a>
+      <a href="https://github.com/farhanfath/Profilewright" target="_blank" rel="noopener">Source</a>
+    </nav>
+  </footer>
+
+  <script src="/landing.js" type="module"></script>
+</body>
+</html>

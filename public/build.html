@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Builder · Profilewright</title>
+  <meta name="description" content="Build a GitHub profile README from your public GitHub data." />
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@5.8.1/github-markdown-dark.css" id="md-dark" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@5.8.1/github-markdown-light.css" id="md-light" disabled />
+  <link rel="stylesheet" href="/style.css" />
+</head>
+<body>
+  <header class="nav">
+    <a class="brand" href="/"><svg class="ic" aria-hidden="true"><use href="/icons.svg#logo" /></svg> Profilewright</a>
+    <div class="nav-end">
+      <span class="nav-note">Uses public GitHub data · no sign-in</span>
+      <a class="icon-link" href="https://github.com/farhanfath/Profilewright" target="_blank" rel="noopener" aria-label="Profilewright on GitHub"><svg class="ic"><use href="/icons.svg#github" /></svg></a>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div>
+        <h1>Your next README starts here.</h1>
+        <p>Choose a look. Make it yours with your GitHub profile.</p>
+      </div>
+      <form id="user-form" class="user-form">
+        <label for="username">GitHub username</label>
+        <div class="input-row">
+          <span>@</span>
+          <input id="username" name="username" autocomplete="off" spellcheck="false" placeholder="octocat" required />
+          <button type="submit" class="btn primary">Personalize previews</button>
+        </div>
+        <small id="status" role="status">Enter a username to load your profile.</small>
+      </form>
+    </section>
+
+    <section id="profile" class="profile" hidden></section>
+
+    <div class="workspace">
+      <aside class="panel">
+        <div class="ptabs" role="tablist" aria-label="Builder panels">
+          <button role="tab" data-pane="templates" aria-selected="true">Templates</button>
+          <button role="tab" data-pane="blocks" aria-selected="false">Blocks <span id="block-count" class="count"></span></button>
+          <button role="tab" data-pane="details" aria-selected="false">Details</button>
+        </div>
+
+        <section class="pane" data-pane="templates">
+          <div id="templates" class="templates"></div>
+          <h3>Theme</h3>
+          <div id="themes" class="chips"></div>
+        </section>
+
+        <section class="pane" data-pane="blocks" hidden>
+          <p class="pane-note">Drag blocks (or use the arrows) to reorder. Open a block to edit it. Text fields accept <code>**bold**</code>, <code>`code`</code> and tokens like <code>{name}</code>.</p>
+          <ol id="blocks" class="blocks"></ol>
+          <div class="add">
+            <h3>Add a block</h3>
+            <div id="library"></div>
+          </div>
+          <p class="tokens">Tokens: <span id="tokens"></span></p>
+          <button id="reset" class="btn ghost" type="button">Reset to template</button>
+        </section>
+
+        <section class="pane" data-pane="details" hidden>
+          <form id="details" class="details">
+            <label>Role <input name="role" /></label>
+            <label>Tagline <textarea name="tagline" rows="2"></textarea></label>
+            <label>Status <input name="status" /></label>
+            <label>Website <input name="website" type="url" placeholder="https://" /></label>
+            <label>LinkedIn <input name="linkedin" type="url" placeholder="https://linkedin.com/in/…" /></label>
+            <label>Email <input name="email" type="email" /></label>
+            <label>Closing line <textarea name="cta" rows="2"></textarea></label>
+            <fieldset>
+              <legend>Selected work (up to 3)</legend>
+              <div id="repos" class="repos"></div>
+            </fieldset>
+          </form>
+        </section>
+      </aside>
+
+      <section class="panel output">
+        <div class="output-head">
+          <div>
+            <h2 id="tpl-title">Recruiter-ready</h2>
+            <p id="tpl-blurb"></p>
+          </div>
+          <div class="actions">
+            <button id="customize" class="btn" type="button"><svg class="ic" aria-hidden="true"><use href="/icons.svg#pencil" /></svg> Customize</button>
+            <button id="download" class="btn" disabled><svg class="ic" aria-hidden="true"><use href="/icons.svg#download" /></svg> README.md</button>
+            <button id="copy" class="btn primary" disabled>Copy README</button>
+          </div>
+        </div>
+
+        <div class="window">
+          <div class="window-bar">
+            <span class="dots"><i></i><i></i><i></i></span>
+            <span id="crumb" class="crumb">username / README.md</span>
+            <div class="tabs" role="tablist">
+              <button role="tab" data-view="preview" aria-selected="true">Preview</button>
+              <button role="tab" data-view="code" aria-selected="false">Code</button>
+              <button id="mode" title="Toggle light/dark preview" aria-label="Toggle light or dark preview"><svg class="ic" aria-hidden="true"><use href="/icons.svg#contrast" /></svg></button>
+            </div>
+          </div>
+          <article id="preview" class="markdown-body"><p class="empty">Your README preview appears here.</p></article>
+          <pre id="code" hidden></pre>
+        </div>
+        <p class="hint">Cards are served from <code id="base"></code>. Deploy this app and set <code>PUBLIC_URL</code> so the images load on github.com.</p>
+      </section>
+    </div>
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/marked@15.0.7/marked.min.js"></script>
+  <script src="/app.js" type="module"></script>
+</body>
+</html>
