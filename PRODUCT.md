@@ -24,7 +24,7 @@ Used in a desktop browser next to GitHub. Output is markdown pasted into GitHub,
 
 ## Capabilities and Constraints
 
-- Node 20 server with no dependencies; vanilla JS front end; `marked` from a CDN for preview.
+- Node 24 server with no dependencies; vanilla JS front end; `marked` from a CDN for preview.
 - Public GitHub API only (60 requests/hour unauthenticated, optional `GITHUB_TOKEN` on the server), 1-hour in-memory cache.
 - Twelve templates, six themes, a block composer (reorder, duplicate, remove, edit text with `{tokens}`), shareable state in the URL.
 - No accounts, no payments. MIT licensed, open source on GitHub, hosted on Vercel (`api/index.js` + `vercel.json`).

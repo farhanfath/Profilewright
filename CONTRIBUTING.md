@@ -1,6 +1,6 @@
 # Contributing
 
-Thanks for helping. Profilewright has no dependencies and no build step, so you only need Node 20+.
+Thanks for helping. Profilewright has no dependencies and no build step, so you only need Node 24.
 
 ```bash
 npm start   # http://localhost:3000, builder at /build

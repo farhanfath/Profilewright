@@ -14,7 +14,7 @@ npm run dev          # restart on file changes
 npm test
 ```
 
-Node 20+ and no dependencies.
+Node 24 and no dependencies.
 
 | Env | Purpose |
 | --- | --- |

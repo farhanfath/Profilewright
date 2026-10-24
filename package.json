@@ -12,7 +12,7 @@
   "homepage": "https://github.com/farhanfath/Profilewright#readme",
   "type": "module",
   "engines": {
-    "node": ">=20"
+    "node": "24.x"
   },
   "scripts": {
     "start": "node server.js",
