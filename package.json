@@ -1,9 +1,19 @@
 {
   "name": "profilewright",
   "version": "0.1.0",
+  "private": true,
   "description": "GitHub profile README builder: templates + themed SVG cards from public GitHub data",
+  "license": "MIT",
+  "author": "Farhan Fathurrohman",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/farhanfath/Profilewright.git"
+  },
+  "homepage": "https://github.com/farhanfath/Profilewright#readme",
   "type": "module",
-  "engines": { "node": ">=20" },
+  "engines": {
+    "node": ">=20"
+  },
   "scripts": {
     "start": "node server.js",
     "dev": "node --watch server.js",
