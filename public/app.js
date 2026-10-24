@@ -351,7 +351,6 @@ $('#download').addEventListener('click', () => {
 
 // --- boot -------------------------------------------------------------------
 
-$('#base').textContent = location.origin;
 state.meta = await api('/api/meta');
 const params = new URLSearchParams(location.search);
 for (const k of ['username', 'template', 'theme']) if (params.get(k)) state[k] = params.get(k);
