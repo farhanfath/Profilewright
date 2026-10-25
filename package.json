@@ -12,11 +12,11 @@
   "homepage": "https://github.com/farhanfath/Profilewright#readme",
   "type": "module",
   "engines": {
-    "node": "24.x"
+    "node": ">=20"
   },
   "scripts": {
-    "start": "node server.js",
-    "dev": "node --watch server.js",
+    "start": "node lib/server.js",
+    "dev": "node --watch lib/server.js",
     "test": "node --test"
   }
 }

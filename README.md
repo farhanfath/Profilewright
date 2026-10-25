@@ -30,7 +30,7 @@ GITHUB_TOKEN="$(gh auth token)" npm run dev
 
 ## Deploy to Vercel
 
-The repo is ready for Vercel as is: static files come from `public/`, and `api/index.js` runs the same router as `server.js` as a serverless function (`vercel.json` routes `/api/*` to it).
+The repo is ready for Vercel as is: static files come from `public/`, and `api/index.js` runs the router in `lib/server.js` as a serverless function (`vercel.json` routes `/api/*` to it).
 
 1. Import the repository at [vercel.com/new](https://vercel.com/new). Framework preset: **Other**. Leave the build command empty.
 2. Add environment variables:
@@ -54,7 +54,7 @@ Templates: Dev Room, Voxel Island, Synthwave Horizon, Recruiter-ready, Everythin
 ## Layout
 
 ```
-server.js         router (static UI + API); `node server.js` runs it as a server
+lib/server.js     router (static UI + API); `node lib/server.js` runs it as a server
 api/index.js      Vercel function entry, reuses the router
 lib/github.js     public GitHub data -> profile (1h in-memory cache)
 lib/themes.js     palettes; mode=light swaps the base, keeps accents

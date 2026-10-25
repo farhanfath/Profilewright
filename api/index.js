@@ -1,4 +1,4 @@
-import { app } from '../server.js';
+import { app } from '../lib/server.js';
 
 // vercel.json rewrites /api/<path> to /api?__path=<path>; restore the original URL for the router.
 export default function handler(req, res) {
