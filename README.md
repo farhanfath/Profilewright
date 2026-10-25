@@ -47,7 +47,7 @@ API responses send `s-maxage=3600`, so Vercel's CDN serves repeat card requests 
 | `GET /api/readme?username=&template=&theme=&role=&tagline=&status=&website=&linkedin=&email=&cta=&projects=a,b[&blocks=<json>]` | README markdown. `blocks` (a JSON array) replaces the template's preset |
 | `GET /api/card/{stats,stack,heatmap,projects,hero,social,neofetch,city,galaxy,snake,synthwave,island,room}?username=&theme=&mode=dark\|light[&repos=a,b&role=&tagline=&website=&linkedin=&email=]` | SVG card |
 
-Templates: Dev Room, Voxel Island, Synthwave Horizon, Recruiter-ready, Everything Hub, Contribution City, Repo Galaxy, Snake Trail, Neofetch, Front Page, Minimal, Terminal.
+Templates: Dev Room, Voxel Island, Synthwave Horizon, Recruiter-ready, Everything Hub, Contribution City, Repo Galaxy, Snake Trail, Neofetch, Front Page, Minimal, Terminal, OSS Maintainer, Indie Hacker, Study Hall, Classic Dev.
 
 ## Layout
 
