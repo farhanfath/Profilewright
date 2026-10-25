@@ -4,8 +4,6 @@ GitHub profile README builder. Type a username, pick a template and a theme, and
 
 No sign-in and no token from visitors: only public profile data, the contribution calendar, languages and repositories are read.
 
-Inspired by [GitSkins' README builder](https://www.gitskins.com/readme-builder).
-
 ## Run
 
 ```bash
