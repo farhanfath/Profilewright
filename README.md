@@ -61,7 +61,7 @@ lib/themes.js     palettes; mode=light swaps the base, keeps accents
 lib/cards.js      SVG card renderers
 lib/blocks.js     block types (cards, text, headings, sections), validation, rendering
 lib/templates.js  templates = preset block lists; option sanitizing
-public/           landing page (index.html, landing.*) and builder (build.html, app.js), shared style.css + icons.svg
+public/           landing page (index.html, landing.*) and builder (build.html, build.js), shared style.css + icons.svg
 test/             node:test
 ```
 
